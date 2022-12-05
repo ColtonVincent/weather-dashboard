@@ -43,3 +43,64 @@ function appendToHistory(search) {
   localStorage.setItem('search-history', JSON.stringify(searchHistory));
   renderSearchHistory();
 }
+
+// Function to get search history from local storage
+function initSearchHistory() {
+    var storedHistory = localStorage.getItem('search-history');
+    if (storedHistory) {
+      searchHistory = JSON.parse(storedHistory);
+    }
+    renderSearchHistory();
+  }
+  
+  // Function to display the current weather data fetched from OpenWeather api.
+  function renderCurrentWeather(city, weather) {
+    var date = dayjs().format('M/D/YYYY');
+    // Store response data from our fetch request in variables
+    var tempF = weather.main.temp;
+    var windMph = weather.wind.speed;
+    var humidity = weather.main.humidity;
+    var iconUrl = `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
+    var iconDescription = weather.weather[0].description || weather[0].main;
+  
+    var card = document.createElement('div');
+    var cardBody = document.createElement('div');
+    var heading = document.createElement('h2');
+    var weatherIcon = document.createElement('img');
+    var tempEl = document.createElement('p');
+    var windEl = document.createElement('p');
+    var humidityEl = document.createElement('p');
+  
+    card.setAttribute('class', 'card');
+    cardBody.setAttribute('class', 'card-body');
+    card.append(cardBody);
+  
+    heading.setAttribute('class', 'h3 card-title');
+    tempEl.setAttribute('class', 'card-text');
+    windEl.setAttribute('class', 'card-text');
+    humidityEl.setAttribute('class', 'card-text');
+  
+    heading.textContent = `${city} (${date})`;
+    weatherIcon.setAttribute('src', iconUrl);
+    weatherIcon.setAttribute('alt', iconDescription);
+    weatherIcon.setAttribute('class', 'weather-img');
+    heading.append(weatherIcon);
+    tempEl.textContent = `Temp: ${tempF}°F`;
+    windEl.textContent = `Wind: ${windMph} MPH`;
+    humidityEl.textContent = `Humidity: ${humidity} %`;
+    cardBody.append(heading, tempEl, windEl, humidityEl);
+  
+    today.innerHTML = '';
+    today.append(card);
+  }
+  
+  // Function to display a forecast card given an object from open weather api
+  // daily forecast.
+  function renderForecastCard(forecast) {
+    // variables for data from api
+    var iconUrl = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
+    var iconDescription = forecast.weather[0].description;
+    var tempF = forecast.main.temp;
+    var humidity = forecast.main.humidity;
+    var windMph = forecast.wind.speed;
+  }
