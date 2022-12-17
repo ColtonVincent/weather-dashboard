@@ -11,6 +11,8 @@ This is a web application that allows a user to search a city and it will pull u
 # Features
 * Open weather API
 * JavaScript
+* Bootstrap
+* JQuery
 
 # Deployed site
 
