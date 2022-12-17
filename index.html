@@ -1,95 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
-  <title>Weather Dashboard</title>
+  <title>Weather-API-Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
-
-  <div class="container">
-    <div class="current-info">
-
-      <div class="date-container">
-        <div class="time" id="time">
-          12:30 <span id="am-pm">PM</span>
-        </div>
-        <div class="date" id="date">
-          Saturday, December 10
-        </div>
-        <div class="others" id="current-weather-items">
-          <div class="weather-items">
-              <div>Humidity</div>
-              <div>68.8%</div>
-          </div>
-          <div class="weather-items">
-              <div>Pressure</div>
-              <div>68.8%</div>
-          </div>
-          <div class="weather-items">
-              <div>Wind</div>
-              <div>10 MPH</div>
-          </div>
-        </div>
-
-        <div class="place-container">
-          <div class="time-zone" id="time-zone">Mountain</div>
-          <div id="country" class="country">US</div>
-        </div>
-      </div>
+  <nav class="navbar navbar-cutsom">
+    <div class="form-group row">
+      <h1>Weather Dashboard</h1>
     </div>
-  </div>
-  <div class="future-forecast">
-    <div class="today" id="curent-temp">
-      <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-      <div class="other">
-        <div class="day">Monday</div>
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
+  </nav>
+  <div class="wrapper">
+    <div id="sidebar-custom">
+      <section>
+        <p class="lead">Search:</p>
+        <form id="search-submit">
+          <input type="text" class="form-control input-custom" name="search" id="search-input" aria-describedby="helpId"
+            placeholder="Search City or Zip Code">
+        </form>
+        <div id="locationList" class="">
+          <p class="lead">
+            Search History:
+          </p>
+        </div>
+      </section>
+    </div id='currentWeather'>
+    <div id='currentWeather'>
+      <h2>Current Weather:</h2>
+      <section class="weatherWrapper">
+        <h3><span id="0currentCity">City </span><span id="0date">(Date)</span>
+          <p class='temp' id="0temp">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width="120" height="120">
+          <p id="0wind">Wind: _MPH</p>
+          <p id="0hum">Humidity: </p>
+          <p>UV Index: <span id="uv"> </span></p>
+      </section>
     </div>
-    <div class="weather-forecast" id="weather-forecast">
-      <div class="weather-forecast-item">
-        <div class="day">Tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
-      <div class="weather-forecast-item">
-        <div class="day">Wed</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
-      <div class="weather-forecast-item">
-        <div class="day">Thur</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
-      <div class="weather-forecast-item">
-        <div class="day">Fri</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
-      <div class="weather-forecast-item">
-        <div class="day">Sat</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
-      <div class="weather-forecast-item">
-        <div class="day">Sun</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-        <div class="temp">Night - 36&#176; F</div>
-        <div class="temp">Day - 47&#176; F</div>
-      </div>
+    <div id="forecast">
+      <h2>5-Day Forecast:</h2>
+      <section class="cards">
+        <div id="oneDay" class="card">
+          <h3 id="1date"> </h3>
+          <p class='temp' id="1temp" class="">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width=" 80" height="80">
+          <p id="1wind" class="">Wind: </p>
+          <p id="1hum" class="">Humidity: </p>
+        </div>
+        <div id="twoDay" class="card">
+          <h3 id="2date"> </h3>
+          <p class='temp' id="2temp" class="">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width=" 80" height="80">
+          <p id="2wind" class="">Wind: </p>
+          <p id="2hum" class="">Humidity: </p>
+        </div>
+        <div id="threeday" class="card">
+          <h3 id="3date"> </h3>
+          <p class='temp' id="3temp" class="">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width=" 80" height="80">
+          <p id="3wind" class="">Wind: </p>
+          <p id="3hum" class="">Humidity: </p>
+        </div>
+        <div id="fourDay" class="card">
+          <h3 id="4date"> </h3>
+          <p class='temp' id="4temp">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width=" 80" height="80">
+          <p id="4wind">Wind: </p>
+          <p id="4hum">Humidity: </p>
+        </div>
+        <div id="fiveDay" class="card">
+          <h3 id="5date"> </h3>
+          <p class='temp' id="5temp">Temp: </p>
+          <img src="http://openweathermap.org/img/wn/10d@2x.png"  alt="weather-icon"id="w-icon" width=" 80" height="80">
+          <p id="5wind">Wind: </p>
+          <p id="5hum">Humidity: </p>
+        </div>
+      </section>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
 </body>
+
 </html>
