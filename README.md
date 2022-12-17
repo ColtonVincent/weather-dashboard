@@ -6,7 +6,7 @@ This is a web application that allows a user to search a city and it will pull u
 
 # Gallery
 
-![](./Screenshot%20(20).png)
+![](./weather%20dashboard.JPG)
 
 # Features
 * Open weather API
